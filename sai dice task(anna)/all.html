@@ -1,0 +1,141 @@
+<head>
+    <Title>DICE TASK</Title>
+      <style>
+        #button{
+            font-size: 2.5rem;
+            position: relative;
+            top: 60px;
+            left:640px;
+        
+            
+        }
+        #button:hover{
+            border: 2px solid black;
+            cursor: pointer;
+        }
+        #cube{
+            width: 150px;
+            height: 150px;
+            background-color:white;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 6rem;
+            font-family: Arial, Helvetica, sans-serif;
+            border: 1px solid black;
+            box-shadow: 0 0 20px;
+            margin-top: 40px;
+
+        }
+        #cube:hover{
+            width:160px;
+            height: 160px;
+
+        }
+        .counter{
+            font-size: 30px;
+
+        }
+        #wintwo,#winthree,#winfive{
+            font-size:40px;
+           margin-top: 50px;
+            margin-left:700px;
+            color: green;
+        }
+        #total{
+            color: brown;
+        }
+
+      </style>
+</head>
+<body>
+   <div>
+    <div>
+        <div id="cube"></div>
+        <button id="button">Roll the Dice</button>
+        
+        <div class="counter" id="two"></div>
+        <div class="counter" id="three"></div>
+        <div class="counter" id="five"></div>
+
+        <div class="counter" id="total"></div>
+
+        <div id="wintwo"></div>
+        <div id="winthree"></div>
+        <div id="winfive"></div>
+       
+    </div>
+   </div>
+   <script>
+    var button = document.getElementById('button');
+    var cube= document.getElementById('cube');
+   
+    var twoElement=document.getElementById("two");
+    var threeElement=document.getElementById("three");
+    var fiveElement=document.getElementById("five");
+ 
+    var totalElement=document.getElementById("total");
+
+    
+    var count2=0;
+    var count3=0;
+    var count5=0;
+   
+
+    var sum=count2+count3+count5;
+
+    button.addEventListener('click',function(){
+        
+        if(count2==30){
+            document.getElementById('wintwo').innerHTML="2 IS WIN";
+            button.disabled=true;
+            }
+        else if(count3==30){
+            document.getElementById('winthree').innerHTML="3 IS WIN";
+            button.disabled=true;
+            }
+       else if(count5==30){
+            document.getElementById('winfive').innerHTML="5 IS WIN";
+              button.disabled=true;
+            }
+        
+
+       
+        const dicevalues=[2,3,5];
+        var randomNumber= dicevalues[Math.floor(Math.random()*dicevalues.length)];
+        document.getElementById('cube').innerHTML="<img src='images/"+randomNumber+".png'/>";
+        // cube.innerHTML=randomNumber;
+
+      
+        if(randomNumber==2){
+            count2=count2+2;
+        }
+        else if(randomNumber==3){
+            count3=count3+3;
+        }
+        else if(randomNumber==5){
+            count5=count5+5;
+        }
+       
+       
+
+        if(randomNumber==2 || randomNumber==3 ||  randomNumber==5 ){
+            sum=count2+count3+count5;
+        }
+        
+        twoElement.innerHTML="Rolls of 2's : "+ count2;
+        threeElement.innerHTML="Rolls of 3's : "+ count3;
+        fiveElement.innerHTML="Rolls of 5's : "+ count5;
+        
+        totalElement.innerHTML="Total "+ sum + " score";
+
+
+      
+    
+      
+    }
+    )
+    </script>
+ </body>
+</html>

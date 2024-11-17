@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <script
+    src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+    crossorigin="anonymous"></script> -->
+
+    <script>
+        // $(document).ready(function(){
+        //     $("#btn").Click(function(){
+        //         $("#text").load("data.txt",{
+
+        //         });
+        //     });
+        // });
+
+       function loadDoc(){
+        var obj= new XMLHttpRequest();
+        obj.onreadystatechange=function()
+        {
+            if(this.readyState==4 && this.status==200)
+            {
+                 document.getElementById("demo").innerHTML=this.responseText;
+            } 
+        }
+        obj.open("post","data.txt",true);
+        obj.send();
+       }
+    </script>
+    <title>AJAX Request|CodeLSC</title>
+    
+  </head>
+  <body>
+    <div id="demo">
+        <h1>Text change over here</h1>
+        <button type="button" onclick="loadDoc()">Click to change</button>
+   </div>
+  
+  </body>
+</html>
